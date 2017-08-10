@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Bali
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+    
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>SortBy</ion-label>
+        <ion-select (ionChange)="changeSort()" [(ngModel)]="sortBy" name="sortBy">
+            <ion-option value="latest">Latest</ion-option>
+            <ion-option value="top">Top</ion-option>
+            <ion-option value="popular">Popular</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    
+    <ion-list no-lines>
+      <ion-card no-padding *ngFor="let item of items">
+        <img src="{{item.urlToImage}}"/>
+        <ion-card-content>
+            <ion-card-title>
+                {{item.title}}
+            </ion-card-title>
+           <ion-list>
+               <ion-item>
+                   <ion-icon name="person" item-left></ion-icon>
+                   <ion-note item-right>
+                       {{item.author}}<br>{{item.publishedAt}}
+                   </ion-note>
+               </ion-item>
+
+               
+           </ion-list>
+           <a ion-button block (click)="viewItem(item)">View</a>
+        </ion-card-content>
+    </ion-card>
+        
+    
+    </ion-list>
+</ion-content>
